@@ -52,7 +52,7 @@ const defaultState = {
     width: 0,
     height: 0,
     extension: 0,
-    tolerance: 25,
+    tolerance: 35,
     distance: 10,
     delay: 75,
   },
