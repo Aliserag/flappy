@@ -1,14 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
 import useGame from "../hooks/useGame";
+import _ from "lodash";
 
-export default function Footer() {
+export default function Footer({ isMuted, toggleMute }) {
   const {
-    clickCount,
-    bestClickCount,
+    isStarted,
+    rounds,
     pipe: { distance },
   } = useGame();
-
+  const animation = isStarted
+    ? {
+        animate: {
+          backgroundPosition: ["0", "-50px"],
+        },
+        transition: {
+          repeat: Infinity,
+          duration: 0.5,
+          repeatType: "loop" as "loop",
+          ease: "linear",
+        },
+      }
+    : {};
+  const score = _.last(rounds)?.score || 0;
+  const best = _.maxBy(rounds, "score")?.score || 0;
   return (
     <footer className="w-full h-28 bg-[#ded895] relative rounded-b-lg">
       <div className="bg-green-500 border-y-4 relative border-green-600 h-10">
@@ -27,14 +42,62 @@ export default function Footer() {
             backgroundSize: "50px 50px",
           }}
           className="absolute w-full h-full"
+          {...animation}
         ></motion.div>
       </div>
       <div className="flex p-2 uppercase font-mono font-semibold items-center justify-around h-[calc(100%-2.5rem)] text-xl text-green-900 flex-wrap">
-        <div>Best: {bestClickCount}</div> {/* Display best clicks */}
-        <div>Points: {clickCount}</div> {/* Display current clicks */}
+        <div>Best: {best}</div>
+        <div>Points: {score}</div>
         <div className="w-full text-center text-lg">
           Speed: {(distance / 10).toFixed(1)}
         </div>
+        <button
+          className="absolute right-2 bottom-2"
+          onClick={toggleMute}
+          aria-label={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5v14l-5-5H3v-4h1l5-5z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 9l-3 3 3 3m3-3h2m-4 0a9 9 0 0118 0"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5v14l-5-5H3v-4h1l5-5z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 9l-3 3 3 3m3-3h2m-4 0a9 9 0 0118 0"
+              />
+            </svg>
+          )}
+        </button>
       </div>
     </footer>
   );
