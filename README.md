@@ -5,7 +5,7 @@
   </a>
 
   <p align="center">
-   Interactive and nostalgic single player game
+   Interactive and nostalgic single player game.
     <br/>
     <br/>
     <a href="https://armanaryanpour.github.io/flappy/">View Demo</a>
