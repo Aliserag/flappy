@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
 import useGame from "../hooks/useGame";
 import useInterval from "../hooks/useInterval";
+
 export function Bird() {
   const {
     bird: {
       size: { height, width },
-      frame,
       isFlying,
-      flap: { delay },
     },
-    getNextFrame,
   } = useGame();
-  useInterval(() => getNextFrame(), isFlying ? delay : null);
   return (
     <div
       style={{
-        backgroundImage: "url(bird.png)",
+        backgroundImage: "url(pepe.gif)",
         height,
         width,
-        backgroundPosition: frame,
-        backgroundSize: "auto 100%",
+        // backgroundPosition: frame,
+        backgroundSize: "contain", // Adjust size to fit without repeating
+        backgroundRepeat: "no-repeat", // Prevent repeating of the image
+        transform: "scaleX(-1)", // Flip the image horizontally
         zIndex: 100,
       }}
     />
   );
 }
+
 export default function FlappyBird() {
   const {
     isStarted,

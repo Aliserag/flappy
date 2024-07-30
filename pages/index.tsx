@@ -14,8 +14,8 @@ const Home: NextPage = () => {
       }}
     >
       <Head>
-        <title>Flappy Bird</title>
-        <link rel="icon" href="favicon.ico" />
+        <title>Flowpepe</title>
+        <link rel="icon" href="pepe.gif" />
       </Head>
 
       <GameProvider>

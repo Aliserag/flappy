@@ -46,6 +46,6 @@ export default function Pipes() {
 }
 export function Pipe() {
   return (
-    <img src="pipe.png" className="h-full w-full pointer-events-none" alt="" />
+    <img src="pipe.png" className="h-full w-1/2 pointer-events-none" alt="" />
   );
 }

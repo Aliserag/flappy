@@ -23,7 +23,7 @@ export default function Game() {
     >
       <Background />
       <motion.div
-        ref={ref} 
+        ref={ref}
         key={_.last(rounds)?.key || "initial"}
         onTap={handleWindowClick}
         className="h-[calc(100%-7rem)] z-10 flex relative overflow-hidden cursor-pointer"
