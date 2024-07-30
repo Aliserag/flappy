@@ -16,6 +16,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Flowpepe</title>
         <link rel="icon" href="pepe.gif" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
 
       <GameProvider>

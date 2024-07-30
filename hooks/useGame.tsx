@@ -331,13 +331,19 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+  const flyWrapper = () => {
+    setState((draft) => {
+      fly(draft);
+    });
+  };
+
   return (
     <GameContext.Provider
       value={{
         ...state,
         getNextFrame,
         fall,
-        fly,
+        fly: flyWrapper,
         handleWindowClick,
         movePipes,
         startGame,
